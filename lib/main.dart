@@ -1,26 +1,29 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_native_splash/flutter_native_splash.dart';
+// import 'package:tracker/home_screen.dart'; // Import your main screen
 
 void main() {
-  WidgetsBinding widgetsBinding = WidgetsFlutterBinding.ensureInitialized();
-  FlutterNativeSplash.preserve(widgetsBinding: widgetsBinding);
   runApp(const MyApp());
 }
 
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
 
-  // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-              debugShowCheckedModeBanner: false,
-        home: Scaffold(
-          body: Center(
-              child: const Image(
-                  image:
-                      AssetImage('assets/16b047df26cffb3537d489b0c0f93961.jpg'),
-                  height: 400)),
-        ));
+    return const MaterialApp(
+      debugShowCheckedModeBanner: false,
+      home: Scaffold(
+        backgroundColor: Color.fromARGB(255, 139, 30, 30),
+        body: Center(
+          child: Text(
+            'test screen',
+            style: TextStyle(
+              fontSize: 24,
+              fontWeight: FontWeight.bold,
+            ),
+          ),
+        ),
+      ),
+    );
   }
 }
