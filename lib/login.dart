@@ -3,7 +3,8 @@ import 'package:google_fonts/google_fonts.dart';
 
 class LogIn extends StatefulWidget {
   @override
-  LogIn({super.key});
+  const LogIn({super.key});
+  @override
   _LogInState createState() => _LogInState();
 }
 
