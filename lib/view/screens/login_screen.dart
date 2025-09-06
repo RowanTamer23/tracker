@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:tracker/core/routes/routes.dart';
 import 'package:tracker/view/widgets/text_button.dart';
 
 class LogInScreen extends StatefulWidget {
@@ -9,6 +10,7 @@ class LogInScreen extends StatefulWidget {
 
 class _LogInStateScreen extends State<LogInScreen> {
   bool _isObscured = true;
+  bool isRememberMe = true;
 
   @override
   Widget build(BuildContext context) {
@@ -19,7 +21,7 @@ class _LogInStateScreen extends State<LogInScreen> {
         backgroundColor: Color(0xFFBF9D81),
         body: Center(
             child: Padding(
-                padding: EdgeInsets.all(40),
+                padding: EdgeInsets.symmetric(horizontal: 30, vertical: 20),
                 child: Column(
                     mainAxisAlignment: MainAxisAlignment.start,
                     children: [
@@ -28,6 +30,9 @@ class _LogInStateScreen extends State<LogInScreen> {
                         width: 250,
                         height: 250,
                         fit: BoxFit.cover,
+                      ),
+                      SizedBox(
+                        height: 40,
                       ),
                       TextField(
                         cursorColor: Color.fromARGB(255, 218, 187, 167),
@@ -72,13 +77,60 @@ class _LogInStateScreen extends State<LogInScreen> {
                             hintStyle:
                                 TextStyle(color: Color.fromRGBO(0, 0, 0, 150))),
                       ),
-                      SizedBox(height: 30),
-                      TextButtonWid(
-                        text: 'Login',
-                        onPressed: () {
-                          // Handle login action
-                        },
-                      )
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children: [
+                          TextButton.icon(
+                            onPressed: () {
+                              setState(() {
+                                isRememberMe = !isRememberMe;
+                              });
+                            },
+                            icon: Icon(
+                                isRememberMe
+                                    ? Icons.check_box
+                                    : Icons.check_box_outline_blank,
+                                color: Color(0xFF5A442F)),
+                            label: Text('Remember me'),
+                            style: TextButton.styleFrom(
+                              foregroundColor: Color(0xFF5A442F),
+                            ),
+                          ),
+                          TextButton(
+                            onPressed: () {},
+                            child: Text(
+                              'Forgot Password?',
+                              style: TextStyle(color: Color(0xFF5A442F)),
+                            ),
+                          )
+                        ],
+                      ),
+                      SizedBox(height: 20),
+                      Container(
+                        width: double.infinity,
+                        child: TextButtonWid(
+                          text: 'Login',
+                          onPressed: () {
+                            // Handle login action
+                          },
+                        ),
+                      ),
+                      Spacer(),
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          Text('Don\'t have an account ?'),
+                          TextButton(
+                            onPressed: () {
+                              Navigator.pushNamed(context, Routes.signup);
+                            },
+                            child: Text(
+                              'Sign Up',
+                              style: TextStyle(color: Color(0xFF5A442F)),
+                            ),
+                          )
+                        ],
+                      ),
                     ]))));
   }
 }
