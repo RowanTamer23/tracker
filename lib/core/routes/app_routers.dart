@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:tracker/view/screens/login_screen.dart';
+import 'package:tracker/features/home/view/screens/home.dart';
+import 'package:tracker/features/onboarding/view/screens/login_screen.dart';
 import 'package:tracker/core/routes/routes.dart';
-import 'package:tracker/view/screens/onboarding_screen.dart';
-import 'package:tracker/view/screens/signup_Screen.dart';
+import 'package:tracker/features/onboarding/view/screens/onboarding_screen.dart';
+import 'package:tracker/features/onboarding/view/screens/signup_Screen.dart';
 
 class AppRouter {
   Route generateRoute(RouteSettings settings) {
@@ -15,6 +16,9 @@ class AppRouter {
 
       case Routes.signup:
         return MaterialPageRoute(builder: (_) => SignUpScreen());
+
+      case Routes.home:
+        return MaterialPageRoute(builder: (_) => HomeScreen());
     }
 
     // Unknown route

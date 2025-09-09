@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:tracker/core/routes/routes.dart';
-import 'package:tracker/view/widgets/text_button.dart';
+import 'package:tracker/features/onboarding/view/widgets/text_button.dart';
 
 class OnboardingScreen extends StatelessWidget {
   const OnboardingScreen({super.key});
