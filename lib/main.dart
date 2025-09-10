@@ -39,18 +39,11 @@ class MyApp extends StatelessWidget {
           title: 'Tracker',
           debugShowCheckedModeBanner: false,
           theme: ThemeData(
-              fontFamily: 'Sigmar',
-              appBarTheme: AppBarTheme(
-                  backgroundColor: Color(
-                0xFFBF9D81,
-              )),
-              scaffoldBackgroundColor: Color(
-                0xFFBF9D81,
-              ),
-              dialogTheme: DialogThemeData(
-                  backgroundColor: Color(
-                0xFFBF9D81,
-              ))),
+            fontFamily: 'Sigmar',
+            appBarTheme: AppBarTheme(
+                backgroundColor: Color.fromARGB(255, 191, 157, 129)),
+            scaffoldBackgroundColor: Color.fromARGB(255, 191, 157, 129),
+          ),
           initialRoute: Routes.onboarding,
           onGenerateRoute: AppRouter().generateRoute,
         );

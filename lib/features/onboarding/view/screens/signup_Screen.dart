@@ -18,6 +18,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
   String password = '';
   String confirmPassword = '';
   bool _isObscured = true;
+  bool _isObscured1 = true;
 
   void submit() {
     bool isvalid = _formKey.currentState!.validate();
@@ -133,13 +134,14 @@ class _SignUpScreenState extends State<SignUpScreen> {
                                 ),
                                 TextFormField(
                                   onSaved: (Value) {
-                                    password = Value!;
+                                    // password = Value!;
                                     context
                                         .read<OnboardingCubit>()
                                         .signUpPassword
                                         .text = Value!;
                                   },
                                   validator: (value) {
+                                    password = value!;
                                     if (value == null ||
                                         value.trim().isEmpty ||
                                         value.trim().length < 6) {
@@ -185,12 +187,11 @@ class _SignUpScreenState extends State<SignUpScreen> {
                                         .text = Value!;
                                   },
                                   validator: (value) {
-                                    if (value == null ||
-                                        password != confirmPassword) {
+                                    if (value == null || value != password) {
                                       return 'Password doesn\'t match';
                                     }
                                   },
-                                  obscureText: _isObscured,
+                                  obscureText: _isObscured1,
                                   cursorColor:
                                       Color.fromARGB(255, 218, 187, 167),
                                   decoration: InputDecoration(
@@ -203,13 +204,13 @@ class _SignUpScreenState extends State<SignUpScreen> {
                                       labelText: 'Confirm password',
                                       suffixIcon: IconButton(
                                         icon: Icon(
-                                          _isObscured
+                                          _isObscured1
                                               ? Icons.visibility_off
                                               : Icons.visibility,
                                         ),
                                         onPressed: () {
                                           setState(() {
-                                            _isObscured = !_isObscured;
+                                            _isObscured1 = !_isObscured1;
                                           });
                                         },
                                       ),

@@ -1,4 +1,3 @@
-import 'package:animated_bottom_navigation_bar/animated_bottom_navigation_bar.dart';
 import 'package:curved_navigation_bar/curved_navigation_bar.dart';
 import 'package:flutter/material.dart';
 
@@ -20,15 +19,15 @@ class _BottomNavigationwidState extends State<BottomNavigationwid> {
   @override
   Widget build(BuildContext context) {
     return CurvedNavigationBar(
+      height: 75,
       items: [
         Icon(Icons.home, size: 35),
         Icon(Icons.blur_on_outlined, size: 35),
         Icon(Icons.person, size: 35)
       ],
-      color: Color.fromARGB(133, 58, 48, 39),
-      backgroundColor: Color(
-        0xFFBF9D81,
-      ),
+      index: selectedIndex,
+      color: const Color.fromARGB(255, 182, 126, 78),
+      backgroundColor: Colors.transparent,
       onTap: _onItemTapped,
     );
   }

@@ -2,6 +2,12 @@ import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 import 'package:percent_indicator/flutter_percent_indicator.dart';
 import 'package:tracker/features/home/view/widgets/bottom_navigation_bar.dart';
+import 'package:tracker/features/home/view/widgets/cycle_card.dart';
+import 'package:tracker/features/home/view/widgets/diet_card.dart';
+import 'package:tracker/features/home/view/widgets/expenses_card.dart';
+import 'package:tracker/features/home/view/widgets/progress_card.dart';
+import 'package:tracker/features/home/view/widgets/todo_card.dart';
+import 'package:tracker/features/home/view/widgets/training_card.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});
@@ -10,7 +16,6 @@ class HomeScreen extends StatefulWidget {
 }
 
 class _HomeScreenState extends State<HomeScreen> {
-  DateTime? selectedDate;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -18,7 +23,7 @@ class _HomeScreenState extends State<HomeScreen> {
         leading: Padding(
           padding: const EdgeInsets.only(left: 8.0),
           child: CircleAvatar(
-            backgroundColor: const Color.fromARGB(255, 58, 48, 39),
+            backgroundColor: const Color.fromARGB(200, 58, 48, 39),
             radius: 23,
             child: Icon(
               Icons.person,
@@ -59,97 +64,35 @@ class _HomeScreenState extends State<HomeScreen> {
           ),
         ],
       ),
-      body: Padding(
-        padding: const EdgeInsets.all(12.0),
-        child: Column(children: [
-          Container(
-            padding: EdgeInsets.all(12),
-            decoration: BoxDecoration(
-              borderRadius: BorderRadius.all(Radius.circular(15)),
-              color: const Color.fromARGB(71, 255, 193, 7),
-            ),
-            width: double.infinity,
-            height: 150,
-            child: Column(
+      body: SingleChildScrollView(
+        child: Padding(
+          padding: const EdgeInsets.all(12.0),
+          child:
+              Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
+            ProgressCard(),
+            SizedBox(height: 20),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
-                Row(
-                  children: [
-                    Icon(Icons.auto_graph),
-                    Text(
-                      '  Today\'s progress',
-                      style: TextStyle(fontSize: 15),
-                    ),
-                  ],
-                ),
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: [
-                    Column(
-                      children: [
-                        Text('work done'),
-                        Text('training done'),
-                        Row(
-                          children: [
-                            TextButton.icon(
-                              label: Text(
-                                selectedDate == null
-                                    ? DateFormat("dd MMM")
-                                        .format(DateTime.now())
-                                    : DateFormat("dd MMM")
-                                        .format(selectedDate!),
-                                style: TextStyle(color: Colors.black),
-                              ),
-                              onPressed: () async {
-                                final DateTime? pickedDate =
-                                    await showDatePicker(
-                                  context: context,
-                                  initialDate: DateTime.now(),
-                                  firstDate: DateTime(2024),
-                                  lastDate: DateTime.now(),
-                                );
-
-                                if (pickedDate != null) {
-                                  setState(() {
-                                    selectedDate = pickedDate;
-                                  });
-                                }
-                              },
-                              icon: Icon(
-                                Icons.expand_more,
-                                size: 30,
-                                color: Colors.black,
-                              ),
-                              style: ButtonStyle(
-                                splashFactory: NoSplash.splashFactory,
-                              ),
-                            ),
-                          ],
-                        )
-                      ],
-                    ),
-                    CircularPercentIndicator(
-                      radius: 50,
-                      center: Text(
-                        '60%',
-                        style: TextStyle(fontSize: 25),
-                      ),
-                      lineWidth: 10,
-                      percent: 0.6,
-                      backgroundColor: Colors.black,
-                      animation: true,
-                      animationDuration: 1200,
-                      circularStrokeCap: CircularStrokeCap.round,
-                      startAngle: 230,
-                      progressColor: Colors.black,
-                      arcType: ArcType.values[1],
-                      arcBackgroundColor: Color.fromARGB(133, 58, 48, 39),
-                    ),
-                  ],
-                ),
+                CycleCard(),
+                ExpensesCard(),
               ],
             ),
-          )
-        ]),
+            SizedBox(height: 20),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              // crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                TodoCard(),
+                Column(
+                  spacing: 10,
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [DietCard(), TrainingCard()],
+                )
+              ],
+            )
+          ]),
+        ),
       ),
       bottomNavigationBar: BottomNavigationwid(),
     );

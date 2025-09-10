@@ -36,11 +36,18 @@ class SignupRepository {
       final response = await FirebaseAuth.instance
           .signInWithEmailAndPassword(email: email, password: password);
     } on FirebaseAuthException catch (e) {
+      print(e);
+      print(e.code);
       String message;
       if (e.code == 'wrong-password') {
-        return 'wrong password';
+        return 'The password is wrong or the user does not exist';
       } else if (e.code == 'invalid-email') {
         return 'this email is already in use';
+      } else if (e.code == 'user-not-found') {
+        return 'user not found';
+      } else if (e.code == 'INVALID_LOGIN_CREDENTIALS' ||
+          e.code == 'invalid-credential') {
+        return 'username or password is incorrect';
       }
     } catch (e) {
       return e.toString();

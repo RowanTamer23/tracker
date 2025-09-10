@@ -24,11 +24,6 @@ class OnboardingCubit extends Cubit<SignUpState> {
   TextEditingController loginPassword = TextEditingController();
   TextEditingController loginEmail = TextEditingController();
 
-  // uploadLicense(XFile image) {
-  //   license = image;
-  //   emit(UploadLicense());
-  // }
-
   @override
   Future<void> close() {
     signUpName.dispose();
