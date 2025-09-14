@@ -1,10 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:intl/intl.dart';
-import 'package:percent_indicator/flutter_percent_indicator.dart';
 import 'package:tracker/features/home/view/widgets/bottom_navigation_bar.dart';
 import 'package:tracker/features/home/view/widgets/cycle_card.dart';
 import 'package:tracker/features/home/view/widgets/diet_card.dart';
 import 'package:tracker/features/home/view/widgets/expenses_card.dart';
+import 'package:tracker/features/home/view/widgets/milestone_card.dart';
 import 'package:tracker/features/home/view/widgets/progress_card.dart';
 import 'package:tracker/features/home/view/widgets/todo_card.dart';
 import 'package:tracker/features/home/view/widgets/training_card.dart';
@@ -48,7 +47,7 @@ class _HomeScreenState extends State<HomeScreen> {
             label: Text('Streak'),
             style: ButtonStyle(
               splashFactory: NoSplash.splashFactory,
-              foregroundColor: MaterialStateProperty.all(
+              foregroundColor: WidgetStateProperty.all(
                 const Color.fromARGB(255, 58, 48, 39),
               ),
             ),
@@ -58,41 +57,48 @@ class _HomeScreenState extends State<HomeScreen> {
             icon: Icon(Icons.notifications),
             style: ButtonStyle(
                 splashFactory: NoSplash.splashFactory,
-                foregroundColor: MaterialStateProperty.all(
+                foregroundColor: WidgetStateProperty.all(
                   const Color.fromARGB(255, 58, 48, 39),
                 )),
           ),
         ],
       ),
-      body: SingleChildScrollView(
-        child: Padding(
-          padding: const EdgeInsets.all(12.0),
-          child:
-              Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
-            ProgressCard(),
-            SizedBox(height: 20),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: [
-                CycleCard(),
-                ExpensesCard(),
-              ],
-            ),
-            SizedBox(height: 20),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              // crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                TodoCard(),
-                Column(
-                  spacing: 10,
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: [DietCard(), TrainingCard()],
-                )
-              ],
-            )
-          ]),
-        ),
+      body: Padding(
+        padding: const EdgeInsets.all(12.0),
+        child: Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
+          MilestoneCard(),
+          SizedBox(
+            height: 10,
+          ),
+          Expanded(
+            child: SingleChildScrollView(
+                physics: AlwaysScrollableScrollPhysics(),
+                child: Column(children: [
+                  ProgressCard(),
+                  SizedBox(height: 20),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      CycleCard(),
+                      ExpensesCard(),
+                    ],
+                  ),
+                  SizedBox(height: 20),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    // crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      TodoCard(),
+                      Column(
+                        spacing: 10,
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children: [DietCard(), TrainingCard()],
+                      )
+                    ],
+                  )
+                ])),
+          )
+        ]),
       ),
       bottomNavigationBar: BottomNavigationwid(),
     );

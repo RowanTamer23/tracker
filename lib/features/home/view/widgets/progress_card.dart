@@ -27,7 +27,7 @@ class _ProgressCardState extends State<ProgressCard> {
         ], begin: Alignment.centerRight, end: Alignment.centerLeft),
       ),
       width: double.infinity,
-      height: 150,
+      height: 130,
       child: Stack(children: [
         Column(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -98,14 +98,14 @@ class _ProgressCardState extends State<ProgressCard> {
         ),
         Positioned(
           right: 10,
-          top: 15,
+          top: 0,
           child: CircularPercentIndicator(
-            radius: 60,
+            radius: 50,
             center: Text(
               '60%',
               style: TextStyle(fontSize: 25, fontWeight: FontWeight.bold),
             ),
-            lineWidth: 15,
+            lineWidth: 12,
             percent: 0.6,
             backgroundColor: Colors.black,
             animation: true,

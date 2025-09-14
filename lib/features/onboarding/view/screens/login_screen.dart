@@ -3,7 +3,6 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:tracker/core/routes/routes.dart';
 import 'package:tracker/features/onboarding/cubit/onboarding_cubit.dart';
 import 'package:tracker/features/onboarding/cubit/onboarding_state.dart';
-import 'package:tracker/features/onboarding/view/screens/onboarding_screen.dart';
 import 'package:tracker/features/onboarding/view/widgets/text_button.dart';
 
 class LogInScreen extends StatefulWidget {
@@ -30,7 +29,7 @@ class _LogInStateScreen extends State<LogInScreen> {
     return BlocConsumer<OnboardingCubit, SignUpState>(
         listener: (context, state) {
           if (state is SignUpSuccess) {
-            Navigator.pushNamed(context, Routes.home);
+            Navigator.pushNamed(context, Routes.bottomNav);
           } else if (state is SignUpFailure) {
             ScaffoldMessenger.of(context)
                 .showSnackBar(SnackBar(content: Text(state.errMessage)));

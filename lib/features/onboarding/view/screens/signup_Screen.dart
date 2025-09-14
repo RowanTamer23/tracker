@@ -142,8 +142,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                                   },
                                   validator: (value) {
                                     password = value!;
-                                    if (value == null ||
-                                        value.trim().isEmpty ||
+                                    if (value.trim().isEmpty ||
                                         value.trim().length < 6) {
                                       return 'Please Enter a valid password';
                                     }
@@ -184,12 +183,13 @@ class _SignUpScreenState extends State<SignUpScreen> {
                                     context
                                         .read<OnboardingCubit>()
                                         .confirmPassword
-                                        .text = Value!;
+                                        .text = Value;
                                   },
                                   validator: (value) {
                                     if (value == null || value != password) {
                                       return 'Password doesn\'t match';
                                     }
+                                    return null;
                                   },
                                   obscureText: _isObscured1,
                                   cursorColor:
