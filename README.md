@@ -13,8 +13,6 @@ A beautiful and intuitive Flutter application for tracking habits, goals, and pe
   <img src="screenshots/Profile.png" width="200" alt="Profile Screen">
 </div>
 
-*Replace with your actual app screenshots*
-
 ## ✨ Features
 
 ### 🎯 Habit & Goal Tracking
