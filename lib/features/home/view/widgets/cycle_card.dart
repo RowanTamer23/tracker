@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:percent_indicator/circular_percent_indicator.dart';
 
 class CycleCard extends StatefulWidget {
@@ -12,8 +13,8 @@ class _CycleCardState extends State<CycleCard> {
   @override
   Widget build(BuildContext context) {
     return Container(
-      width: 130,
-      height: 150,
+      width: 130.w,
+      height: 150.h,
       decoration: BoxDecoration(
         shape: BoxShape.rectangle,
         border: Border.all(
@@ -35,14 +36,14 @@ class _CycleCardState extends State<CycleCard> {
               Icon(
                 Icons.sync,
                 color: Colors.white,
-                size: 30,
+                size: 30.sp,
               ),
               CircularPercentIndicator(
                 center: Text(
                   '95%',
                   style: TextStyle(
                     color: Colors.white,
-                    fontSize: 12,
+                    fontSize: 12.sp,
                     fontWeight: FontWeight.bold,
                   ),
                 ),
@@ -52,7 +53,7 @@ class _CycleCardState extends State<CycleCard> {
                 percent: 0.95,
                 backgroundColor: const Color.fromARGB(20, 255, 255, 255),
                 progressColor: const Color.fromARGB(255, 255, 255, 255),
-                radius: 23,
+                radius: 23.sp,
                 lineWidth: 3,
               ),
             ],
@@ -62,7 +63,7 @@ class _CycleCardState extends State<CycleCard> {
             'Cycle',
             style: TextStyle(
               color: Colors.white,
-              fontSize: 16,
+              fontSize: 16.sp,
               fontWeight: FontWeight.bold,
             ),
           ),
@@ -70,7 +71,7 @@ class _CycleCardState extends State<CycleCard> {
             '5 days left',
             style: TextStyle(
               color: Colors.white70,
-              fontSize: 12,
+              fontSize: 12.sp,
             ),
           ),
         ],

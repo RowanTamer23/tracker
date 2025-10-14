@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:percent_indicator/circular_percent_indicator.dart';
 
 class TodoCard extends StatefulWidget {
@@ -12,8 +13,8 @@ class _TodoCardState extends State<TodoCard> {
   @override
   Widget build(BuildContext context) {
     return Container(
-      width: 200,
-      height: 350,
+      width: 200.w,
+      height: 350.h,
       decoration: BoxDecoration(
         shape: BoxShape.rectangle,
         border: Border.all(
@@ -36,23 +37,25 @@ class _TodoCardState extends State<TodoCard> {
                   Icons.check_circle,
                   color: Color.fromARGB(255, 254, 254, 254),
                 ),
-                CircularPercentIndicator(
-                  center: Text(
-                    '50%',
-                    style: TextStyle(
-                      color: Colors.white,
-                      fontSize: 12,
-                      fontWeight: FontWeight.bold,
+                RepaintBoundary(
+                  child: CircularPercentIndicator(
+                    center: Text(
+                      '50%',
+                      style: TextStyle(
+                        color: Colors.white,
+                        fontSize: 12.sp,
+                        fontWeight: FontWeight.bold,
+                      ),
                     ),
+                    animation: true,
+                    animationDuration: 1200,
+                    circularStrokeCap: CircularStrokeCap.round,
+                    percent: 0.50,
+                    backgroundColor: const Color.fromARGB(20, 255, 255, 255),
+                    progressColor: const Color.fromARGB(255, 255, 255, 255),
+                    radius: 23.sp,
+                    lineWidth: 3.sp,
                   ),
-                  animation: true,
-                  animationDuration: 1200,
-                  circularStrokeCap: CircularStrokeCap.round,
-                  percent: 0.50,
-                  backgroundColor: const Color.fromARGB(20, 255, 255, 255),
-                  progressColor: const Color.fromARGB(255, 255, 255, 255),
-                  radius: 23,
-                  lineWidth: 3,
                 ),
               ],
             ),
@@ -61,7 +64,7 @@ class _TodoCardState extends State<TodoCard> {
               'To-Do',
               style: TextStyle(
                 color: Color.fromARGB(255, 0, 0, 0),
-                fontSize: 18,
+                fontSize: 18.sp,
                 fontWeight: FontWeight.bold,
               ),
             ),
@@ -72,7 +75,7 @@ class _TodoCardState extends State<TodoCard> {
                   children: [
                     Icon(
                       Icons.circle_outlined,
-                      size: 10,
+                      size: 10.sp,
                       color: Color.fromARGB(255, 255, 255, 255),
                     ),
                     SizedBox(width: 10),
@@ -80,7 +83,7 @@ class _TodoCardState extends State<TodoCard> {
                       'Task 1',
                       style: TextStyle(
                         color: Color.fromARGB(255, 255, 255, 255),
-                        fontSize: 16,
+                        fontSize: 16.sp,
                       ),
                     ),
                   ],
@@ -90,7 +93,7 @@ class _TodoCardState extends State<TodoCard> {
                   children: [
                     Icon(
                       Icons.circle,
-                      size: 10,
+                      size: 10.sp,
                       color: Color.fromARGB(255, 255, 255, 255),
                     ),
                     SizedBox(width: 10),
@@ -98,7 +101,7 @@ class _TodoCardState extends State<TodoCard> {
                       'Task 2',
                       style: TextStyle(
                         color: Color.fromARGB(255, 255, 255, 255),
-                        fontSize: 16,
+                        fontSize: 16.sp,
                       ),
                     ),
                   ],

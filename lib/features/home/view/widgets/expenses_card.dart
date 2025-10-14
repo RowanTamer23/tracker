@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:percent_indicator/circular_percent_indicator.dart';
 
 class ExpensesCard extends StatefulWidget {
@@ -23,8 +24,8 @@ class _ExpensesCardState extends State<ExpensesCard> {
         ], begin: Alignment.topLeft, end: Alignment.bottomRight),
       ),
       padding: const EdgeInsets.all(14.0),
-      width: 230,
-      height: 150,
+      width: 220.w,
+      height: 150.h,
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
@@ -35,7 +36,7 @@ class _ExpensesCardState extends State<ExpensesCard> {
               Icon(
                 Icons.wallet,
                 color: Colors.white,
-                size: 30,
+                size: 30.sp,
               ),
               CircularPercentIndicator(
                 center: Text(
@@ -62,7 +63,7 @@ class _ExpensesCardState extends State<ExpensesCard> {
             'Total Expenses',
             style: TextStyle(
               color: const Color.fromARGB(255, 0, 0, 0),
-              fontSize: 15,
+              fontSize: 15.sp,
               fontWeight: FontWeight.bold,
             ),
           ),
@@ -70,7 +71,7 @@ class _ExpensesCardState extends State<ExpensesCard> {
             '\$1,250.00',
             style: TextStyle(
               color: Colors.white,
-              fontSize: 20,
+              fontSize: 20.sp,
               fontWeight: FontWeight.bold,
             ),
           ),

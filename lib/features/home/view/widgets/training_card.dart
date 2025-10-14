@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:percent_indicator/circular_percent_indicator.dart';
 
 class TrainingCard extends StatefulWidget {
@@ -23,8 +24,8 @@ class _TrainingCardState extends State<TrainingCard> {
         ], begin: Alignment.topLeft, end: Alignment.bottomRight),
       ),
       padding: const EdgeInsets.all(16.0),
-      width: 160,
-      height: 180,
+      width: 150.w,
+      height: 180.h,
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
@@ -34,7 +35,7 @@ class _TrainingCardState extends State<TrainingCard> {
               Icon(
                 Icons.fitness_center,
                 color: Colors.white,
-                size: 30,
+                size: 30.sp,
               ),
               SizedBox(width: 10),
               CircularPercentIndicator(
@@ -42,7 +43,7 @@ class _TrainingCardState extends State<TrainingCard> {
                   '30%',
                   style: TextStyle(
                     color: Colors.white,
-                    fontSize: 12,
+                    fontSize: 12.sp,
                     fontWeight: FontWeight.bold,
                   ),
                 ),
@@ -52,8 +53,8 @@ class _TrainingCardState extends State<TrainingCard> {
                 percent: 0.30,
                 backgroundColor: const Color.fromARGB(20, 255, 255, 255),
                 progressColor: const Color.fromARGB(255, 255, 255, 255),
-                radius: 23,
-                lineWidth: 3,
+                radius: 23.sp,
+                lineWidth: 3.sp,
               ),
             ],
           ),
@@ -62,7 +63,7 @@ class _TrainingCardState extends State<TrainingCard> {
             'Training',
             style: TextStyle(
               color: Colors.white,
-              fontSize: 15,
+              fontSize: 15.sp,
               fontWeight: FontWeight.bold,
             ),
           ),
@@ -71,7 +72,7 @@ class _TrainingCardState extends State<TrainingCard> {
             '5 Exercises',
             style: TextStyle(
               color: Colors.white,
-              fontSize: 12,
+              fontSize: 12.sp,
             ),
           ),
         ],

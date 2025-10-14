@@ -47,6 +47,7 @@ class _HomeScreenState extends State<HomeScreen> {
             label: Text('Streak'),
             style: ButtonStyle(
               splashFactory: NoSplash.splashFactory,
+              overlayColor: WidgetStateProperty.all(Colors.transparent),
               foregroundColor: WidgetStateProperty.all(
                 const Color.fromARGB(255, 58, 48, 39),
               ),
@@ -100,7 +101,6 @@ class _HomeScreenState extends State<HomeScreen> {
           )
         ]),
       ),
-      bottomNavigationBar: BottomNavigationwid(),
     );
   }
 }
