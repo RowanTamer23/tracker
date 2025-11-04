@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:percent_indicator/circular_percent_indicator.dart';
+import 'package:tracker/main.dart';
 
 class MilestoneCard extends StatefulWidget {
   const MilestoneCard({super.key});
@@ -9,10 +10,12 @@ class MilestoneCard extends StatefulWidget {
 }
 
 class _MilestoneCardState extends State<MilestoneCard> {
+  bool get isLightMode => Theme.of(context).brightness == Brightness.light;
+
   @override
   Widget build(BuildContext context) {
     return Container(
-      padding: EdgeInsets.all(12),
+      padding: EdgeInsets.only(left: 10, right: 10, top: 10, bottom: 5),
       decoration: BoxDecoration(
         borderRadius: BorderRadius.all(Radius.circular(15)),
         border: Border.all(
@@ -33,11 +36,16 @@ class _MilestoneCardState extends State<MilestoneCard> {
             children: [
               Row(
                 children: [
-                  Icon(Icons.leaderboard),
+                  Icon(
+                    Icons.leaderboard,
+                    color: isLightMode ? Colors.black : Colors.white,
+                  ),
                   Text(
                     '  My Milestones',
                     style: TextStyle(
-                      color: const Color.fromARGB(255, 255, 229, 208),
+                      color: isLightMode
+                          ? const Color.fromARGB(255, 255, 229, 208)
+                          : Colors.white,
                       fontSize: 18,
                       fontWeight: FontWeight.w900,
                     ),
@@ -46,6 +54,7 @@ class _MilestoneCardState extends State<MilestoneCard> {
               ),
               Icon(
                 Icons.touch_app_outlined,
+                color: isLightMode ? Colors.black : Colors.white,
                 size: 25,
               )
             ],
@@ -54,7 +63,7 @@ class _MilestoneCardState extends State<MilestoneCard> {
             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
             children: [
               SizedBox(
-                height: 70,
+                height: 80,
                 child: Column(
                   children: [
                     CircularPercentIndicator(
@@ -75,12 +84,16 @@ class _MilestoneCardState extends State<MilestoneCard> {
                       arcType: ArcType.values[1],
                       arcBackgroundColor: Color.fromARGB(69, 58, 48, 39),
                     ),
-                    Text('todos')
+                    Text(
+                      'todos',
+                      style: TextStyle(
+                          color: isLightMode ? Colors.black : Colors.white),
+                    )
                   ],
                 ),
               ),
               SizedBox(
-                height: 70,
+                height: 80,
                 child: Column(
                   children: [
                     CircularPercentIndicator(
@@ -101,12 +114,16 @@ class _MilestoneCardState extends State<MilestoneCard> {
                       arcType: ArcType.values[1],
                       arcBackgroundColor: Color.fromARGB(69, 58, 48, 39),
                     ),
-                    Text('todos')
+                    Text(
+                      'todos',
+                      style: TextStyle(
+                          color: isLightMode ? Colors.black : Colors.white),
+                    )
                   ],
                 ),
               ),
               SizedBox(
-                height: 70,
+                height: 80,
                 child: Column(
                   children: [
                     CircularPercentIndicator(
@@ -127,12 +144,16 @@ class _MilestoneCardState extends State<MilestoneCard> {
                       arcType: ArcType.values[1],
                       arcBackgroundColor: Color.fromARGB(69, 58, 48, 39),
                     ),
-                    Text('todos')
+                    Text(
+                      'todos',
+                      style: TextStyle(
+                          color: isLightMode ? Colors.black : Colors.white),
+                    )
                   ],
                 ),
               ),
               SizedBox(
-                height: 70,
+                height: 80,
                 child: Column(
                   children: [
                     CircularPercentIndicator(
@@ -153,7 +174,11 @@ class _MilestoneCardState extends State<MilestoneCard> {
                       arcType: ArcType.values[1],
                       arcBackgroundColor: Color.fromARGB(69, 58, 48, 39),
                     ),
-                    Text('todos')
+                    Text(
+                      'todos',
+                      style: TextStyle(
+                          color: isLightMode ? Colors.black : Colors.white),
+                    )
                   ],
                 ),
               ),

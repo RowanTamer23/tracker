@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:tracker/features/bullet/view/screens/bullet_screen.dart';
 import 'package:tracker/features/home/view/screens/home.dart';
-import 'package:tracker/features/home/view/widgets/bottom_navigation_bar.dart';
+import 'package:tracker/core/shared/bottom_navigation_bar.dart';
 import 'package:tracker/features/onboarding/view/screens/login_screen.dart';
 import 'package:tracker/core/routes/routes.dart';
 import 'package:tracker/features/onboarding/view/screens/onboarding_screen.dart';

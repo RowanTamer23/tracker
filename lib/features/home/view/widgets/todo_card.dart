@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:percent_indicator/circular_percent_indicator.dart';
+import 'package:tracker/main.dart';
 
 class TodoCard extends StatefulWidget {
   const TodoCard({super.key});
@@ -10,6 +11,8 @@ class TodoCard extends StatefulWidget {
 }
 
 class _TodoCardState extends State<TodoCard> {
+  bool get isLightMode => Theme.of(context).brightness == Brightness.light;
+
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -63,8 +66,10 @@ class _TodoCardState extends State<TodoCard> {
             Text(
               'To-Do',
               style: TextStyle(
-                color: Color.fromARGB(255, 0, 0, 0),
-                fontSize: 18.sp,
+                color: isLightMode
+                    ? const Color.fromARGB(255, 0, 0, 0)
+                    : Colors.white,
+                fontSize: 20.sp,
                 fontWeight: FontWeight.bold,
               ),
             ),
@@ -76,13 +81,13 @@ class _TodoCardState extends State<TodoCard> {
                     Icon(
                       Icons.circle_outlined,
                       size: 10.sp,
-                      color: Color.fromARGB(255, 255, 255, 255),
+                      color: isLightMode ? Colors.white70 : Colors.white30,
                     ),
                     SizedBox(width: 10),
                     Text(
                       'Task 1',
                       style: TextStyle(
-                        color: Color.fromARGB(255, 255, 255, 255),
+                        color: isLightMode ? Colors.white70 : Colors.white30,
                         fontSize: 16.sp,
                       ),
                     ),
@@ -94,13 +99,13 @@ class _TodoCardState extends State<TodoCard> {
                     Icon(
                       Icons.circle,
                       size: 10.sp,
-                      color: Color.fromARGB(255, 255, 255, 255),
+                      color: isLightMode ? Colors.white70 : Colors.white30,
                     ),
                     SizedBox(width: 10),
                     Text(
                       'Task 2',
                       style: TextStyle(
-                        color: Color.fromARGB(255, 255, 255, 255),
+                        color: isLightMode ? Colors.white70 : Colors.white30,
                         fontSize: 16.sp,
                       ),
                     ),

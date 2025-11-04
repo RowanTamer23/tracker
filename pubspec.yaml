@@ -41,6 +41,7 @@ dependencies:
   intl: ^0.20.2
 
 
+
 dev_dependencies:
   flutter_test:
     sdk: flutter
@@ -58,9 +59,15 @@ flutter:
 
   assets:
     - assets/icon/icon.png
+    - assets/icon/icon1.png
+    # - assets/icon/icon_dark1.png
+    # - assets/icon/icon_dark2.png
     - assets/images/logo.png
+    - assets/images/logo1.png
     - assets/images/background.png
-    - assets/images/todo1.gif
+    - assets/images/onboarding1.gif
+    - assets/images/todo2.gif
+    - assets/images/water.jpg
 
   # To add custom fonts to your application, add a fonts section here,
 

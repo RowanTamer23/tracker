@@ -4,6 +4,7 @@ import 'package:tracker/core/routes/routes.dart';
 import 'package:tracker/features/onboarding/cubit/onboarding_cubit.dart';
 import 'package:tracker/features/onboarding/cubit/onboarding_state.dart';
 import 'package:tracker/features/onboarding/view/widgets/text_button.dart';
+import 'package:tracker/main.dart';
 
 class SignUpScreen extends StatefulWidget {
   const SignUpScreen({super.key});
@@ -13,6 +14,8 @@ class SignUpScreen extends StatefulWidget {
 }
 
 class _SignUpScreenState extends State<SignUpScreen> {
+  bool get isLightMode => Theme.of(context).brightness == Brightness.light;
+
   final _formKey = GlobalKey<FormState>();
 
   String password = '';
@@ -42,7 +45,11 @@ class _SignUpScreenState extends State<SignUpScreen> {
           }
         },
         builder: (context, state) => Scaffold(
-            appBar: AppBar(),
+            appBar: AppBar(
+              backgroundColor: Colors.transparent,
+              elevation: 0,
+              iconTheme: IconThemeData(color: Color(0xFF5A442F)),
+            ),
             body: Center(
                 child: Padding(
                     padding: EdgeInsets.symmetric(horizontal: 30, vertical: 20),
@@ -50,7 +57,9 @@ class _SignUpScreenState extends State<SignUpScreen> {
                         mainAxisAlignment: MainAxisAlignment.start,
                         children: [
                           Image.asset(
-                            'assets/icon/icon.png',
+                            isLightMode
+                                ? 'assets/icon/icon1.png'
+                                : '/Volumes/HardDisk/flutter_projects/tracker/assets/icon/icon_dark2.png',
                             width: 250,
                           ),
                           SizedBox(height: 20),
@@ -60,15 +69,21 @@ class _SignUpScreenState extends State<SignUpScreen> {
                             child: Column(
                               crossAxisAlignment: CrossAxisAlignment.start,
                               children: [
-                                Text('SignUp',
-                                    style: TextStyle(
-                                        fontSize: 30,
-                                        fontWeight: FontWeight.bold,
-                                        color: Color(0xFF5A442F))),
+                                Text(
+                                  'SignUp',
+                                  style: TextStyle(
+                                      fontSize: 30,
+                                      fontWeight: FontWeight.bold,
+                                      color: isLightMode
+                                          ? Color(0xFF5A442F)
+                                          : KColorSchemeDark.primaryFixed),
+                                ),
                                 Text('please create an account to continue',
                                     style: TextStyle(
                                         fontSize: 15,
-                                        color: Color(0xFF5A442F))),
+                                        color: isLightMode
+                                            ? Color(0xFF5A442F)
+                                            : KColorSchemeDark.secondary)),
                               ],
                             ),
                           ),
@@ -84,6 +99,11 @@ class _SignUpScreenState extends State<SignUpScreen> {
                                         .signUpName
                                         .text = Value!;
                                   },
+                                  style: TextStyle(
+                                    color: isLightMode
+                                        ? Colors.black
+                                        : Colors.white,
+                                  ),
                                   cursorColor:
                                       Color.fromARGB(255, 218, 187, 167),
                                   decoration: InputDecoration(
@@ -95,10 +115,16 @@ class _SignUpScreenState extends State<SignUpScreen> {
                                               width: 2)),
                                       labelText: 'Name',
                                       labelStyle: TextStyle(
-                                          color: Color.fromRGBO(0, 0, 0, 150)),
+                                          color: isLightMode
+                                              ? Color.fromRGBO(0, 0, 0, 150)
+                                              : Color.fromRGBO(
+                                                  255, 255, 255, 150)),
                                       hintText: 'John Doe',
                                       hintStyle: TextStyle(
-                                          color: Color.fromRGBO(0, 0, 0, 150))),
+                                          color: isLightMode
+                                              ? Color.fromRGBO(0, 0, 0, 150)
+                                              : Color.fromRGBO(
+                                                  255, 255, 255, 150))),
                                 ),
                                 TextFormField(
                                   onSaved: (Value) {
@@ -107,6 +133,11 @@ class _SignUpScreenState extends State<SignUpScreen> {
                                         .signUpEmail
                                         .text = Value!;
                                   },
+                                  style: TextStyle(
+                                    color: isLightMode
+                                        ? Colors.black
+                                        : Colors.white,
+                                  ),
                                   validator: (value) {
                                     if (value == null ||
                                         value.trim().isEmpty ||
@@ -127,10 +158,16 @@ class _SignUpScreenState extends State<SignUpScreen> {
                                               width: 2)),
                                       labelText: 'Email',
                                       labelStyle: TextStyle(
-                                          color: Color.fromRGBO(0, 0, 0, 150)),
+                                          color: isLightMode
+                                              ? Color.fromRGBO(0, 0, 0, 150)
+                                              : Color.fromRGBO(
+                                                  255, 255, 255, 150)),
                                       hintText: 'example@example.com',
                                       hintStyle: TextStyle(
-                                          color: Color.fromRGBO(0, 0, 0, 150))),
+                                          color: isLightMode
+                                              ? Color.fromRGBO(0, 0, 0, 150)
+                                              : Color.fromRGBO(
+                                                  255, 255, 255, 150))),
                                 ),
                                 TextFormField(
                                   onSaved: (Value) {
@@ -140,6 +177,11 @@ class _SignUpScreenState extends State<SignUpScreen> {
                                         .signUpPassword
                                         .text = Value!;
                                   },
+                                  style: TextStyle(
+                                    color: isLightMode
+                                        ? Colors.black
+                                        : Colors.white,
+                                  ),
                                   validator: (value) {
                                     password = value!;
                                     if (value.trim().isEmpty ||
@@ -172,10 +214,16 @@ class _SignUpScreenState extends State<SignUpScreen> {
                                         },
                                       ),
                                       labelStyle: TextStyle(
-                                          color: Color.fromRGBO(0, 0, 0, 150)),
+                                          color: isLightMode
+                                              ? Color.fromRGBO(0, 0, 0, 150)
+                                              : Color.fromRGBO(
+                                                  255, 255, 255, 150)),
                                       hintText: 'Pass@123',
                                       hintStyle: TextStyle(
-                                          color: Color.fromRGBO(0, 0, 0, 150))),
+                                          color: isLightMode
+                                              ? Color.fromRGBO(0, 0, 0, 150)
+                                              : Color.fromRGBO(
+                                                  255, 255, 255, 150))),
                                 ),
                                 TextFormField(
                                   onSaved: (Value) {
@@ -185,6 +233,11 @@ class _SignUpScreenState extends State<SignUpScreen> {
                                         .confirmPassword
                                         .text = Value;
                                   },
+                                  style: TextStyle(
+                                    color: isLightMode
+                                        ? Colors.black
+                                        : Colors.white,
+                                  ),
                                   validator: (value) {
                                     if (value == null || value != password) {
                                       return 'Password doesn\'t match';
@@ -215,10 +268,16 @@ class _SignUpScreenState extends State<SignUpScreen> {
                                         },
                                       ),
                                       labelStyle: TextStyle(
-                                          color: Color.fromRGBO(0, 0, 0, 150)),
+                                          color: isLightMode
+                                              ? Color.fromRGBO(0, 0, 0, 150)
+                                              : Color.fromRGBO(
+                                                  255, 255, 255, 150)),
                                       hintText: 'Pass@123',
                                       hintStyle: TextStyle(
-                                          color: Color.fromRGBO(0, 0, 0, 150))),
+                                          color: isLightMode
+                                              ? Color.fromRGBO(0, 0, 0, 150)
+                                              : Color.fromRGBO(
+                                                  255, 255, 255, 150))),
                                 ),
                               ],
                             ),
@@ -246,7 +305,11 @@ class _SignUpScreenState extends State<SignUpScreen> {
                                 },
                                 child: Text(
                                   'LogIn',
-                                  style: TextStyle(color: Color(0xFF5A442F)),
+                                  style: TextStyle(
+                                      color: isLightMode
+                                          ? Color(0xFF5A442F)
+                                          : KColorSchemeDark
+                                              .onSecondaryFixedVariant),
                                 ),
                               )
                             ],

@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:percent_indicator/circular_percent_indicator.dart';
+import 'package:tracker/main.dart';
 
 class DietCard extends StatefulWidget {
   const DietCard({super.key});
@@ -10,6 +11,8 @@ class DietCard extends StatefulWidget {
 }
 
 class _DietCardState extends State<DietCard> {
+  bool get isLightMode => Theme.of(context).brightness == Brightness.light;
+
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -62,7 +65,9 @@ class _DietCardState extends State<DietCard> {
           Text(
             'Diet Progress',
             style: TextStyle(
-              color: const Color.fromARGB(255, 0, 0, 0),
+              color: isLightMode
+                  ? const Color.fromARGB(255, 0, 0, 0)
+                  : Colors.white,
               fontSize: 15.sp,
               fontWeight: FontWeight.bold,
             ),
@@ -70,7 +75,7 @@ class _DietCardState extends State<DietCard> {
           Text(
             '1,200 kcal',
             style: TextStyle(
-              color: Colors.white,
+              color: isLightMode ? Colors.white : Colors.white70,
               fontSize: 20.sp,
               fontWeight: FontWeight.bold,
             ),

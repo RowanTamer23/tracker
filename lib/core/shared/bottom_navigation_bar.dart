@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:tracker/features/bullet/view/screens/bullet_screen.dart';
 import 'package:tracker/features/home/view/screens/home.dart';
 import 'package:tracker/features/profile/view/screens/profile_screen.dart';
+import 'package:tracker/main.dart';
 
 class BottomNavigationwid extends StatefulWidget {
   const BottomNavigationwid({super.key});
@@ -11,6 +12,8 @@ class BottomNavigationwid extends StatefulWidget {
 }
 
 class _BottomNavigationwidState extends State<BottomNavigationwid> {
+  bool get isLightMode => Theme.of(context).brightness == Brightness.light;
+
   int selectedIndex = 0;
 
   final screens = const [
@@ -26,12 +29,29 @@ class _BottomNavigationwidState extends State<BottomNavigationwid> {
         bottomNavigationBar: CurvedNavigationBar(
           height: 75,
           items: [
-            Icon(Icons.home, size: 35),
-            Icon(Icons.blur_on_outlined, size: 35),
-            Icon(Icons.person, size: 35)
+            Icon(Icons.home,
+                size: 35,
+                color: isLightMode
+                    ? KColorScheme.onPrimaryContainer
+                    : KColorSchemeDark.onPrimaryContainer),
+            Icon(Icons.blur_on_outlined,
+                size: 35,
+                color: isLightMode
+                    ? KColorScheme.onPrimaryContainer
+                    : KColorSchemeDark.onPrimaryContainer),
+            Icon(Icons.person,
+                size: 35,
+                color: isLightMode
+                    ? KColorScheme.onPrimaryContainer
+                    : KColorSchemeDark.onPrimaryContainer)
           ],
           index: selectedIndex,
-          color: const Color.fromARGB(255, 182, 126, 78),
+          color: isLightMode
+              ? KColorScheme.secondary
+              : KColorSchemeDark.onInverseSurface,
+          buttonBackgroundColor: isLightMode
+              ? KColorScheme.secondary
+              : KColorSchemeDark.onInverseSurface,
           backgroundColor: Colors.transparent,
           onTap: (index) => setState(() => selectedIndex = index),
         ));

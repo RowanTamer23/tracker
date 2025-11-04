@@ -1,10 +1,17 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:tracker/features/profile/widgets/dropdown_menu.dart';
 import 'package:tracker/features/profile/widgets/profile_view.dart';
+import 'package:tracker/main.dart';
 
-class ProfileScreen extends StatelessWidget {
+class ProfileScreen extends StatefulWidget {
   const ProfileScreen({super.key});
 
+  @override
+  State<ProfileScreen> createState() => _ProfileScreenState();
+}
+
+class _ProfileScreenState extends State<ProfileScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -20,7 +27,9 @@ class ProfileScreen extends StatelessWidget {
           SizedBox(height: 40.h),
           // Profile Options
           ListTile(
-            leading: Icon(Icons.edit, color: Color.fromARGB(200, 58, 48, 39)),
+            leading: Icon(
+              Icons.edit,
+            ),
             title: Text('Edit Profile'),
             onTap: () {
               // Navigate to Edit Profile Screen
@@ -31,22 +40,15 @@ class ProfileScreen extends StatelessWidget {
             color: Color.fromARGB(200, 58, 48, 39),
             thickness: 1,
           ),
-          ListTile(
-            leading:
-                Icon(Icons.dark_mode, color: Color.fromARGB(200, 58, 48, 39)),
-            title: Text('Dark Mode'),
-            onTap: () {
-              // Navigate to Dark Mode Screen
-            },
-            splashColor: (Color.fromARGB(50, 58, 48, 39)),
-          ),
+          ListTile(title: ThemeDropdown()),
           Divider(
             color: Color.fromARGB(200, 58, 48, 39),
             thickness: 1,
           ),
           ListTile(
-            leading:
-                Icon(Icons.person_add, color: Color.fromARGB(200, 58, 48, 39)),
+            leading: Icon(
+              Icons.person_add,
+            ),
             title: Text('Invite a Friend'),
             onTap: () {
               // Navigate to Invite a Friend Screen
@@ -58,7 +60,9 @@ class ProfileScreen extends StatelessWidget {
             thickness: 1,
           ),
           ListTile(
-            leading: Icon(Icons.help, color: Color.fromARGB(200, 58, 48, 39)),
+            leading: Icon(
+              Icons.help,
+            ),
             title: Text('Help'),
             onTap: () {
               // Navigate to Help Screen
@@ -70,9 +74,14 @@ class ProfileScreen extends StatelessWidget {
             thickness: 1,
           ),
           ListTile(
-            leading: Icon(Icons.logout, color: Color.fromARGB(200, 58, 48, 39)),
+            leading: Icon(
+              Icons.logout,
+            ),
             title: Text('Logout'),
             onTap: () {
+              Navigator.of(context).pushNamed(
+                '/login',
+              );
               // Handle Logout
             },
             splashColor: (Color.fromARGB(50, 58, 48, 39)),

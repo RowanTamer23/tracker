@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:percent_indicator/circular_percent_indicator.dart';
+import 'package:tracker/main.dart';
 
 class TrainingCard extends StatefulWidget {
   const TrainingCard({super.key});
@@ -10,6 +11,8 @@ class TrainingCard extends StatefulWidget {
 }
 
 class _TrainingCardState extends State<TrainingCard> {
+  bool get isLightMode => Theme.of(context).brightness == Brightness.light;
+
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -71,7 +74,7 @@ class _TrainingCardState extends State<TrainingCard> {
           Text(
             '5 Exercises',
             style: TextStyle(
-              color: Colors.white,
+              color: isLightMode ? Colors.white : Colors.white70,
               fontSize: 12.sp,
             ),
           ),

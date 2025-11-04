@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 import 'package:percent_indicator/circular_percent_indicator.dart';
+import 'package:tracker/main.dart';
 
 class ProgressCard extends StatefulWidget {
   const ProgressCard({super.key});
@@ -11,6 +12,7 @@ class ProgressCard extends StatefulWidget {
 
 class _ProgressCardState extends State<ProgressCard> {
   DateTime? selectedDate;
+  bool get isLightMode => Theme.of(context).brightness == Brightness.light;
 
   @override
   Widget build(BuildContext context) {
@@ -34,11 +36,14 @@ class _ProgressCardState extends State<ProgressCard> {
           children: [
             Row(
               children: [
-                Icon(Icons.auto_graph),
+                Icon(Icons.auto_graph,
+                    color: isLightMode ? Colors.black : Colors.white),
                 Text(
                   '  Today\'s progress',
                   style: TextStyle(
-                    color: const Color.fromARGB(255, 255, 229, 208),
+                    color: isLightMode
+                        ? const Color.fromARGB(255, 255, 229, 208)
+                        : Colors.white,
                     fontSize: 20,
                     fontWeight: FontWeight.w900,
                   ),
@@ -53,7 +58,7 @@ class _ProgressCardState extends State<ProgressCard> {
                   children: [
                     Text('Today\'s Reminder',
                         style: TextStyle(
-                            color: Colors.black,
+                            color: isLightMode ? Colors.black : Colors.white70,
                             fontSize: 15,
                             fontWeight: FontWeight.bold)),
                     Row(
@@ -63,7 +68,10 @@ class _ProgressCardState extends State<ProgressCard> {
                             selectedDate == null
                                 ? DateFormat("dd MMM").format(DateTime.now())
                                 : DateFormat("dd MMM").format(selectedDate!),
-                            style: TextStyle(color: Colors.black),
+                            style: TextStyle(
+                              color:
+                                  isLightMode ? Colors.black : Colors.white70,
+                            ),
                           ),
                           onPressed: () async {
                             final DateTime? pickedDate = await showDatePicker(
@@ -72,7 +80,6 @@ class _ProgressCardState extends State<ProgressCard> {
                               firstDate: DateTime(2024),
                               lastDate: DateTime.now(),
                             );
-
                             if (pickedDate != null) {
                               setState(() {
                                 selectedDate = pickedDate;
@@ -82,7 +89,7 @@ class _ProgressCardState extends State<ProgressCard> {
                           icon: Icon(
                             Icons.expand_more,
                             size: 30,
-                            color: Colors.black,
+                            color: isLightMode ? Colors.black : Colors.white70,
                           ),
                           style: ButtonStyle(
                             splashFactory: NoSplash.splashFactory,
@@ -103,7 +110,10 @@ class _ProgressCardState extends State<ProgressCard> {
             radius: 50,
             center: Text(
               '60%',
-              style: TextStyle(fontSize: 25, fontWeight: FontWeight.bold),
+              style: TextStyle(
+                  fontSize: 25,
+                  fontWeight: FontWeight.bold,
+                  color: isLightMode ? Colors.black : Colors.white),
             ),
             lineWidth: 12,
             percent: 0.6,

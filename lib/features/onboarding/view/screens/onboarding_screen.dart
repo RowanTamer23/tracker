@@ -1,20 +1,29 @@
 import 'package:flutter/material.dart';
 import 'package:tracker/core/routes/routes.dart';
 import 'package:tracker/features/onboarding/view/widgets/text_button.dart';
+import 'package:tracker/main.dart';
 
-class OnboardingScreen extends StatelessWidget {
+class OnboardingScreen extends StatefulWidget {
   const OnboardingScreen({super.key});
+
+  @override
+  State<OnboardingScreen> createState() => _OnboardingScreenState();
+}
+
+class _OnboardingScreenState extends State<OnboardingScreen> {
+  bool get isLightMode => Theme.of(context).brightness == Brightness.light;
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Color(0xFFBF9D81),
       body: Center(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
             Image.asset(
-              'assets/images/todo1.gif',
+              isLightMode
+                  ? 'assets/images/todo2.gif'
+                  : 'assets/images/onboarding1.gif',
               width: 250,
               height: 250,
               fit: BoxFit.cover,
@@ -25,7 +34,9 @@ class OnboardingScreen extends StatelessWidget {
               style: TextStyle(
                 fontSize: 15,
                 fontWeight: FontWeight.bold,
-                color: Color(0xFF4A403A),
+                color: isLightMode
+                    ? Color(0xFF4A403A)
+                    : KColorSchemeDark.onPrimaryContainer,
               ),
             ),
             SizedBox(height: 20),

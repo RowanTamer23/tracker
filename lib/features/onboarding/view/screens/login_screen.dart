@@ -4,6 +4,7 @@ import 'package:tracker/core/routes/routes.dart';
 import 'package:tracker/features/onboarding/cubit/onboarding_cubit.dart';
 import 'package:tracker/features/onboarding/cubit/onboarding_state.dart';
 import 'package:tracker/features/onboarding/view/widgets/text_button.dart';
+import 'package:tracker/main.dart';
 
 class LogInScreen extends StatefulWidget {
   const LogInScreen({super.key});
@@ -12,6 +13,8 @@ class LogInScreen extends StatefulWidget {
 }
 
 class _LogInStateScreen extends State<LogInScreen> {
+  bool get isLightMode => Theme.of(context).brightness == Brightness.light;
+
   bool _isObscured = true;
   bool isRememberMe = true;
   final _formKey = GlobalKey<FormState>();
@@ -36,7 +39,11 @@ class _LogInStateScreen extends State<LogInScreen> {
           }
         },
         builder: (context, state) => Scaffold(
-            appBar: AppBar(),
+            appBar: AppBar(
+              backgroundColor: Colors.transparent,
+              elevation: 0,
+              iconTheme: IconThemeData(color: Color(0xFF5A442F)),
+            ),
             body: Center(
                 child: Padding(
                     padding: EdgeInsets.symmetric(horizontal: 30, vertical: 20),
@@ -44,7 +51,9 @@ class _LogInStateScreen extends State<LogInScreen> {
                         mainAxisAlignment: MainAxisAlignment.start,
                         children: [
                           Image.asset(
-                            'assets/icon/icon.png',
+                            isLightMode
+                                ? 'assets/icon/icon1.png'
+                                : '/Volumes/HardDisk/flutter_projects/tracker/assets/icon/icon_dark2.png',
                             width: 250,
                             // height: 250,
                           ),
@@ -59,11 +68,17 @@ class _LogInStateScreen extends State<LogInScreen> {
                                     style: TextStyle(
                                         fontSize: 30,
                                         fontWeight: FontWeight.bold,
-                                        color: Color(0xFF5A442F))),
-                                Text('please sign in to continue',
-                                    style: TextStyle(
-                                        fontSize: 15,
-                                        color: Color(0xFF5A442F))),
+                                        color: isLightMode
+                                            ? Color(0xFF5A442F)
+                                            : KColorSchemeDark.primaryFixed)),
+                                Text(
+                                  'please sign in to continue',
+                                  style: TextStyle(
+                                      fontSize: 15,
+                                      color: isLightMode
+                                          ? KColorScheme.onPrimaryContainer
+                                          : KColorSchemeDark.secondary),
+                                )
                               ],
                             ),
                           ),
@@ -79,6 +94,11 @@ class _LogInStateScreen extends State<LogInScreen> {
                                         .loginEmail
                                         .text = Value!;
                                   },
+                                  style: TextStyle(
+                                    color: isLightMode
+                                        ? Colors.black
+                                        : Colors.white,
+                                  ),
                                   validator: (value) {
                                     if (value == null ||
                                         value.trim().isEmpty ||
@@ -99,10 +119,16 @@ class _LogInStateScreen extends State<LogInScreen> {
                                               width: 2)),
                                       labelText: 'Email',
                                       labelStyle: TextStyle(
-                                          color: Color.fromRGBO(0, 0, 0, 150)),
+                                          color: isLightMode
+                                              ? Color.fromRGBO(0, 0, 0, 150)
+                                              : Color.fromRGBO(
+                                                  255, 255, 255, 150)),
                                       hintText: 'example@example.com',
                                       hintStyle: TextStyle(
-                                          color: Color.fromRGBO(0, 0, 0, 150))),
+                                          color: isLightMode
+                                              ? Color.fromRGBO(0, 0, 0, 150)
+                                              : Color.fromRGBO(
+                                                  255, 255, 255, 150))),
                                 ),
                                 TextFormField(
                                   onSaved: (Value) {
@@ -111,6 +137,11 @@ class _LogInStateScreen extends State<LogInScreen> {
                                         .loginPassword
                                         .text = Value!;
                                   },
+                                  style: TextStyle(
+                                    color: isLightMode
+                                        ? Colors.black
+                                        : Colors.white,
+                                  ),
                                   validator: (value) {
                                     if (value == null || value.trim().isEmpty) {
                                       return 'incorrect password';
@@ -141,10 +172,16 @@ class _LogInStateScreen extends State<LogInScreen> {
                                         },
                                       ),
                                       labelStyle: TextStyle(
-                                          color: Color.fromRGBO(0, 0, 0, 150)),
+                                          color: isLightMode
+                                              ? Color.fromRGBO(0, 0, 0, 150)
+                                              : Color.fromRGBO(
+                                                  255, 255, 255, 150)),
                                       hintText: 'Pass@123',
                                       hintStyle: TextStyle(
-                                          color: Color.fromRGBO(0, 0, 0, 150))),
+                                          color: isLightMode
+                                              ? Color.fromRGBO(0, 0, 0, 150)
+                                              : Color.fromRGBO(
+                                                  255, 255, 255, 150))),
                                 ),
                               ],
                             ),
@@ -162,17 +199,24 @@ class _LogInStateScreen extends State<LogInScreen> {
                                     isRememberMe
                                         ? Icons.check_box
                                         : Icons.check_box_outline_blank,
-                                    color: Color(0xFF5A442F)),
+                                    color: isLightMode
+                                        ? Color(0xFF5A442F)
+                                        : KColorSchemeDark.secondary),
                                 label: Text('Remember me'),
                                 style: TextButton.styleFrom(
-                                  foregroundColor: Color(0xFF5A442F),
+                                  foregroundColor: isLightMode
+                                      ? Color(0xFF5A442F)
+                                      : KColorSchemeDark.secondary,
                                 ),
                               ),
                               TextButton(
                                 onPressed: () {},
                                 child: Text(
                                   'Forgot Password?',
-                                  style: TextStyle(color: Color(0xFF5A442F)),
+                                  style: TextStyle(
+                                      color: isLightMode
+                                          ? Color(0xFF5A442F)
+                                          : KColorSchemeDark.secondary),
                                 ),
                               )
                             ],
@@ -196,10 +240,13 @@ class _LogInStateScreen extends State<LogInScreen> {
                                 onPressed: () {
                                   Navigator.pushNamed(context, Routes.signup);
                                 },
-                                child: Text(
-                                  'Sign Up',
-                                  style: TextStyle(color: Color(0xFF5A442F)),
-                                ),
+                                child: Text('Sign Up',
+                                    style: TextStyle(
+                                      color: isLightMode
+                                          ? Color(0xFF5A442F)
+                                          : KColorSchemeDark
+                                              .onSecondaryFixedVariant,
+                                    )),
                               )
                             ],
                           ),
