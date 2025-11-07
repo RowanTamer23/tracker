@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:tracker/features/bullet/view/screens/bullet_screen.dart';
+import 'package:tracker/features/expenses/view/screens/expenses_screen.dart';
 import 'package:tracker/features/home/view/screens/home.dart';
 import 'package:tracker/core/shared/bottom_navigation_bar.dart';
 import 'package:tracker/features/onboarding/view/screens/login_screen.dart';
@@ -31,6 +32,9 @@ class AppRouter {
 
       case Routes.bottomNav:
         return MaterialPageRoute(builder: (_) => BottomNavigationwid());
+
+      case Routes.expenses:
+        return MaterialPageRoute(builder: (_) => ExpensesScreen());
     }
 
     // Unknown route

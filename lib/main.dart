@@ -1,5 +1,3 @@
-import 'dart:ui';
-
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -7,6 +5,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:tracker/core/routes/app_routers.dart';
 import 'package:tracker/core/routes/routes.dart';
+import 'package:tracker/features/expenses/controller/expenses_bloc.dart';
 import 'package:tracker/features/onboarding/cubit/onboarding_cubit.dart';
 import 'package:tracker/features/onboarding/repository/onboarding_repository.dart';
 import 'package:tracker/firebase_options.dart';
@@ -30,6 +29,9 @@ void main() async {
       providers: [
         BlocProvider(
           create: (context) => OnboardingCubit(SignupRepository()),
+        ),
+        BlocProvider(
+          create: (context) => ExpensesBloc(),
         ),
       ],
       child: const MyApp(),

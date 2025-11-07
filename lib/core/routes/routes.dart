@@ -6,4 +6,5 @@ class Routes {
   static const String bullet = '/bullet';
   static const String profile = '/profile';
   static const String bottomNav = '/bottomNav';
+  static const String expenses = '/expenses';
 }
